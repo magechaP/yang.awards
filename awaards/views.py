@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Profile, Project, Rating
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm, ProjectForm, RateForm
+from .forms import ProfileForm,ProjectForm,RateForm
 
 # Create your views here.
 def index(request):
