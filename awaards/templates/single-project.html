@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{%block content%}
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-2"></div>
+            <div class="col-md-8 ">
+                <div class="card-group " style="margin:2%;" data-aos='fade-up'>
+                    <div class="view overlay zoom ">
+                        <img src="{{project.image.url}}" class="card-img-top">
+                        <div class="mask flex-center rgba-black-strong">
+                            <a href="{% url 'rate_project' project.id %}" class="btn btn-dark">VIEW <i
+                                    class="far fa-chevron-double-right"></i> </a>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="border:2px;">
+                        <a href="">
+                            <h5 class="strong-text"> <strong>{{project.title}}</strong> </h5>
+                        </a>
+                        <hr class="bg-info">
+                        <p class="black-text pull-right">{{project.pub_date|date:"F d,Y"}}</p>
+                        <h6>By {{project.profile}}</h6>
+                        <p>Average Rating:{{mean_rate}}</p>
+                        <a class="btn btn-dark" href="{% url 'rateform' project.id %}"><i class="fas fa-clone left"></i>
+                            Rate Project </a>
+                        <a class="btn btn-dark" href="{{project.link}}"><i class="fas fa-clone left"></i> See
+                            Project</a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+</body>
+{%endblock%}
